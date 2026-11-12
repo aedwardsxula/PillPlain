@@ -1,0 +1,92 @@
+PillPlain Development Plan 1
+
+PillPlain – Project Development Plan
+
+Team: Pill Rx
+
+Application: PillPlain
+
+API: openFDA Drug Label API
+https://open.fda.gov/apis/authentication/?utm_source=chatgpt.com
+
+Team Members: Pierce Dugas, Terron Mcintyre
+
+Tasks:
+
+
+Phase 1: User Interface Development
+
+1. Design PillPlain home screen, including search bar, navigation options and application
+logo.
+2. Create home screen utilizing Jetpack Compose.
+3. Implement navigation between Home, Search, Saved Medications, and Information
+Screens.
+4. Create medication search TextField.
+5. Implement search button to submit medication names.
+Due November 14th
+.
+6. Design medication results screen.
+7. Create medication details screen to display medication information.
+8. Create a saved medications screen.
+9. Configure PillPlain’s color scheme, typography, and UI styling.
+
+
+Phase 2: Medication & API Integration
+10. Review openFDA Drug Label API documentation and response structure.
+
+Due November 17th
+
+11. Add required HTTP networking dependencies to Android Studio.
+12. Add internet permissions to AndroidManifest.xml file.
+13. Configure openFDA Drug Label API key for development without committing to GitHub.
+14. Create Kotlin data classes matching openFDA results array and label fields.
+15. Implement GET request to api.fda.gov/drug/label.json
+
+Due November 20th
+
+16. Add api key, search, and limit query parameters.
+17. Implement medication searches with openFDA field.
+18. Include brand-name searches with openFDA field.
+19. Parse medication API’s JSON response to Kotlin objects.
+20. Connect Medication search TextField to API request
+21. Display matching medications on search results screen
+22. Display medication purpose & usage information on details screen.
+20 + Tasks Due November 30th.
+23. Display medication warnings and common side effects when available from API
+
+
+Phase 4: Core Application features
+24. Add a saved medication button to medication details screen
+25. Implement local storage for saved medications
+26. Display saved medications on Saved Medications screen
+27. Add functionality removing saved medications
+28. Implement Android TextToSpeech, reading medication descriptions aloud.
+29. Add loading indicators during API request
+30. Add error messages for invalid medication searches and failed API requests.
+31. Improve accessibility through readable fonts, labels, and button sizing.
+
+
+Phase 5: Testing and Finalization
+32. Test medication searches using Lisinopril and Metformin
+33. Test API authentication and JSON response parsing
+34. Test navigation between all application screens
+35. Test saving and removoving medications
+36. Test text-to-speech functionality
+37. Test error handling for missing medical information as well as network failures.
+38. Verify that no API credentials have been committed to GitHub
+39. Test completed application on Android Emulator (should be done regularly throughout
+completion)
+40. Update README with application features and setup instructions.
+41. Fix issues identified during testing.
+42. Verify required functionality and preparation for submission.
+
+
+Steps to hide API key
+1) Never upload API directly to GitHub
+2) Store the development API key within local.properties
+3) Verify local.properties is included in .gitignore
+4) Verify buildFeatures {
+buildConfig = true in the build.gradle.kts
+5) Configure Gradle to read API key from local.properties
+6) Don’t print the API key within Logcat
+7) Remove/Replace any exposed API key
