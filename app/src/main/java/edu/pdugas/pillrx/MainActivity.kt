@@ -34,7 +34,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PillPlainHome(
     onOpenSaved: () -> Unit,
-    onOpenInfo: () -> Unit
+    onOpenInfo: () -> Unit,
+    onSearchMedication: (String) -> Unit
+
 ) {
     var medicationName by remember { mutableStateOf("") }
     Column(
@@ -93,7 +95,9 @@ fun PillPlainHome(
 
         Button(
             onClick = {
-            }, modifier = Modifier.fillMaxWidth(),
+                onSearchMedication(medicationName.trim())
+            },
+            modifier = Modifier.fillMaxWidth(),
             enabled = medicationName.isNotBlank()
         ) {
             Text("Search Medication")

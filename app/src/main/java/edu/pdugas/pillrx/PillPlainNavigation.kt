@@ -21,6 +21,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.MaterialTheme
 
 private enum class Destination(val title: String) {
     HOME("Home"),
@@ -32,13 +34,16 @@ private enum class Destination(val title: String) {
 @Composable
 fun PillPlainApp() {
     var destination by rememberSaveable { mutableStateOf(Destination.HOME) }
+    var searchedMedication by rememberSaveable {
+        mutableStateOf("")
+    }
     BackHandler(enabled = destination != Destination.HOME) {
         destination = Destination.HOME
     }
     Scaffold(
         bottomBar = {
             NavigationBar {
-                Destination.values().forEach { tab ->
+                Destination.entries.forEach { tab ->
                     val (label, icon) = when (tab) {
                         Destination.HOME -> "Home" to Icons.Default.Home
                         Destination.SEARCH -> "Search" to Icons.Default.Search
@@ -65,9 +70,36 @@ fun PillPlainApp() {
             when (destination) {
                 Destination.HOME -> PillPlainHome(
                     onOpenSaved = { destination = Destination.SAVED },
-                    onOpenInfo = { destination = Destination.INFO }
+                    onOpenInfo = { destination = Destination.INFO },
+                    onSearchMedication = { medication ->
+                        searchedMedication = medication
+                        destination = Destination.SEARCH
+                    }
                 )
-                Destination.SEARCH, Destination.SAVED, Destination.INFO ->
+                Destination.SEARCH -> {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "Search",
+                            style = MaterialTheme.typography.headlineMedium
+                        )
+
+                        Text(
+                            text = if (searchedMedication.isBlank()) {
+                                "Enter a medication from the Home screen."
+                            } else {
+                                "Submitted medication: $searchedMedication"
+                            }
+                        )
+
+                        if (searchedMedication.isNotBlank()) {
+                            Text("Medication information will appear here.")
+                        }
+                    }
+                }
+
+                Destination.SAVED, Destination.INFO ->
                     Text(destination.title)
             }
         }
