@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.activity.compose.BackHandler
 
 private enum class Destination(val title: String) {
     HOME("Home"),
@@ -31,7 +32,9 @@ private enum class Destination(val title: String) {
 @Composable
 fun PillPlainApp() {
     var destination by rememberSaveable { mutableStateOf(Destination.HOME) }
-
+    BackHandler(enabled = destination != Destination.HOME) {
+        destination = Destination.HOME
+    }
     Scaffold(
         bottomBar = {
             NavigationBar {
@@ -60,7 +63,10 @@ fun PillPlainApp() {
             contentAlignment = Alignment.Center
         ) {
             when (destination) {
-                Destination.HOME -> PillPlainHome()
+                Destination.HOME -> PillPlainHome(
+                    onOpenSaved = { destination = Destination.SAVED },
+                    onOpenInfo = { destination = Destination.INFO }
+                )
                 Destination.SEARCH, Destination.SAVED, Destination.INFO ->
                     Text(destination.title)
             }

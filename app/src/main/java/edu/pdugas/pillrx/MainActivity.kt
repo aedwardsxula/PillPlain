@@ -32,7 +32,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PillPlainHome() {
+fun PillPlainHome(
+    onOpenSaved: () -> Unit,
+    onOpenInfo: () -> Unit
+) {
     var medicationName by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
@@ -110,11 +113,13 @@ fun PillPlainHome() {
             QuickAccessCard(
                 title = "Saved Medications",
                 icon = Icons.Default.Bookmark,
+                onClick = onOpenSaved,
                 modifier = Modifier.weight(1f)
             )
             QuickAccessCard(
                 title = "Information",
                 icon = Icons.Default.Info,
+                onClick = onOpenInfo,
                 modifier = Modifier.weight(1f)
             )
         }
@@ -125,11 +130,13 @@ fun PillPlainHome() {
 fun QuickAccessCard(
     title: String,
     icon: ImageVector,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
+        onClick = onClick,
         modifier = modifier
-) {
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
