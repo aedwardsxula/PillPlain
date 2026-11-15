@@ -12,6 +12,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 
 private enum class Destination(val title: String) {
     HOME("Home"),
@@ -24,7 +32,27 @@ private enum class Destination(val title: String) {
 fun PillPlainApp() {
     var destination by rememberSaveable { mutableStateOf(Destination.HOME) }
 
-    Scaffold { padding ->
+    Scaffold(
+        bottomBar = {
+            NavigationBar {
+                Destination.values().forEach { tab ->
+                    val (label, icon) = when (tab) {
+                        Destination.HOME -> "Home" to Icons.Default.Home
+                        Destination.SEARCH -> "Search" to Icons.Default.Search
+                        Destination.SAVED -> "Saved" to Icons.Default.Bookmark
+                        Destination.INFO -> "Info" to Icons.Default.Info
+                    }
+
+                    NavigationBarItem(
+                        selected = destination == tab,
+                        onClick = { destination = tab },
+                        icon = { Icon(icon, contentDescription = null) },
+                        label = { Text(label) }
+                    )
+                }
+            }
+        }
+    ) { padding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
