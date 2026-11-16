@@ -30,9 +30,10 @@ For setup questions or bug reports, contact a team member listed below
 
 ## Project Log
 
+<!-- | Terron Ambrose McIntyre | 2026-11-12 | Revise the README to describe PillPlain and document how to get started and get help. | -->
+
 | Who | Date | What |
 | --- | --- | --- |
-| Terron Ambrose McIntyre | 2026-11-12 | Revise the README to describe PillPlain and document how to get started and get help. |
- | Pierce | 2026-11-14 | Design Pillplain home screen, including search bar, navigation options and application logo. |
- | Terron | 2026-11-14 | Implement navigation between Home, Search, Saved Medications, and Information Screens. |
- | Pierce | 2026-11-14 | Implement the search button to submit medication names. |
+| Pierce | 2026-11-14 | Design Pillplain home screen, including search bar, navigation options and application logo. |
+| Terron | 2026-11-14 | Implement navigation between Home, Search, Saved Medications, and Information Screens. |
+| Pierce | 2026-11-14 | Implement the search button to submit medication names. |
