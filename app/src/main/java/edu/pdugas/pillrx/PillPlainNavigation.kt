@@ -123,7 +123,7 @@ fun PillPlainApp() {
                     }
                 )
 
-                Destination.SAVED,
+                Destination.SAVED -> SavedMedicationsScreen()
                 Destination.INFO -> Text(destination.title)
             }
         }
