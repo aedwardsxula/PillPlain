@@ -21,8 +21,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.MaterialTheme
 
 private enum class Destination(val title: String) {
     HOME("Home"),
@@ -76,29 +74,9 @@ fun PillPlainApp() {
                         destination = Destination.SEARCH
                     }
                 )
-                Destination.SEARCH -> {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "Search",
-                            style = MaterialTheme.typography.headlineMedium
-                        )
-
-                        Text(
-                            text = if (searchedMedication.isBlank()) {
-                                "Enter a medication from the Home screen."
-                            } else {
-                                "Submitted medication: $searchedMedication"
-                            }
-                        )
-
-                        if (searchedMedication.isNotBlank()) {
-                            Text("Medication information will appear here.")
-                        }
-                    }
-                }
-
+                Destination.SEARCH -> MedicationResultsScreen(
+                    medicationName = searchedMedication
+                )
                 Destination.SAVED, Destination.INFO ->
                     Text(destination.title)
             }
