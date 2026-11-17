@@ -32,10 +32,12 @@ For setup questions or bug reports, contact a team member listed below
 
 <!-- | Terron Ambrose McIntyre | 2026-11-12 | Revise the README to describe PillPlain and document how to get started and get help. | -->
 
-| Who | Date | What |
-| --- | --- | --- |
+| Who | Date | What                                                                                            |
+| --- | --- |-------------------------------------------------------------------------------------------------|
 | Pierce | 2026-11-14 | #1 Design Pillplain home screen, including search bar, navigation options and application logo. |
-| Terron | 2026-11-14 | #2 Implement navigation between Home, Search, Saved Medications, and Information Screens. |
-| Pierce | 2026-11-14 | #5 Implement the search button to submit medication names. |
-| Pierce | 2026-11-17 | #6 Design medication results screen. |
-| Pierce | 2026-11-17 | #7 Create a medication details screen to display medication information. |
+| Terron | 2026-11-14 | #2 Implement navigation between Home, Search, Saved Medications, and Information Screens.       |
+| Pierce | 2026-11-14 | #5 Implement the search button to submit medication names.                                      |
+| Pierce | 2026-11-17 | #6 Design medication results screen.                                                            |
+| Pierce | 2026-11-17 | #7 Create a medication details screen to display medication information.                        |
+| Terron | 2026-11-17 | #8 Create a saved medications screen.                                                           |
+| Terron | 2026-11-17 | #9 Configure PillPlain’s color scheme, typography, and UI styling.                              |
