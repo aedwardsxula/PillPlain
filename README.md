@@ -37,3 +37,4 @@ For setup questions or bug reports, contact a team member listed below
 | Pierce | 2026-11-14 | #1 Design Pillplain home screen, including search bar, navigation options and application logo. |
 | Terron | 2026-11-14 | #2 Implement navigation between Home, Search, Saved Medications, and Information Screens. |
 | Pierce | 2026-11-14 | #5 Implement the search button to submit medication names. |
+| Pierce | 2026-11-17 | #6 Design medication results screen. |
