@@ -27,6 +27,9 @@ private enum class Destination(val title: String) {
 @Composable
 fun PillPlainApp() {
     var destination by rememberSaveable { mutableStateOf(Destination.HOME) }
+    var savedMedications by androidx.compose.runtime.remember {
+        mutableStateOf(emptyList<MedicationResult>())
+    }
     var searchedMedication by rememberSaveable {
         mutableStateOf("")
     }
@@ -120,10 +123,20 @@ fun PillPlainApp() {
                     ),
                     onBack = {
                         destination = Destination.SEARCH
+                    },
+                    onSave = { medication ->
+                        if (savedMedications.none {
+                                it.name.equals(medication.name, ignoreCase = true)
+                            }) {
+                            savedMedications = savedMedications + medication
+                        }
+                        destination = Destination.SAVED
                     }
                 )
 
-                Destination.SAVED -> SavedMedicationsScreen()
+                Destination.SAVED -> SavedMedicationsScreen(
+                    medications = savedMedications
+                )
                 Destination.INFO -> Text(destination.title)
             }
         }

@@ -15,7 +15,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MedicationDetailsScreen(
     medication: MedicationResult,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onSave: (MedicationResult) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -43,7 +44,12 @@ fun MedicationDetailsScreen(
             text = "Medication Details",
             style = MaterialTheme.typography.headlineMedium
         )
-
+        androidx.compose.material3.Button(
+            onClick = { onSave(medication) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Save Medication")
+        }
         // Selected medication
         Card(
             modifier = Modifier.fillMaxWidth()
