@@ -38,3 +38,4 @@ For setup questions or bug reports, contact a team member listed below
 | Terron | 2026-11-14 | #2 Implement navigation between Home, Search, Saved Medications, and Information Screens. |
 | Pierce | 2026-11-14 | #5 Implement the search button to submit medication names. |
 | Pierce | 2026-11-17 | #6 Design medication results screen. |
+| Pierce | 2026-11-17 | #7 Create a medication details screen to display medication information. |
