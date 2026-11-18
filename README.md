@@ -40,4 +40,5 @@ For setup questions or bug reports, contact a team member listed below
 | Pierce | 2026-11-17 | #6 Design medication results screen.                                                            |
 | Pierce | 2026-11-17 | #7 Create a medication details screen to display medication information.                        |
 | Terron | 2026-11-17 | #8 Create a saved medications screen.                                                           |
-| Terron | 2026-11-17 | #9 Configure PillPlain’s color scheme, typography, and UI styling.                              |
+| Terron | 2026-11-17 | #9 Configure PillPlain’s color scheme, typography, and UI styling. |
+| Pierce | 2026-11-17 | #10 Review openFDA Drug Label API documentation and response structure. |
