@@ -42,3 +42,4 @@ For setup questions or bug reports, contact a team member listed below
 | Terron | 2026-11-17 | #8 Create a saved medications screen.                                                           |
 | Terron | 2026-11-17 | #9 Configure PillPlain’s color scheme, typography, and UI styling. |
 | Pierce | 2026-11-17 | #10 Review openFDA Drug Label API documentation and response structure. |
+| Pierce | 2026-11-17 | #11 Add required Ktor HTTP networking dependencies & internet permissions to AndroidManifest.xml. to Android Studio. |
