@@ -17,7 +17,7 @@ label sections easier to find and read on a phone
 1. Clone this team repository to your computer.
 2. Open this repository folder in your code editor.
 
-App setup and launch instructions will be added once the team verifies them.
+# FIX ME - App setup and launch instructions will be added once the team verifies them.
 
 ## Getting Help
 
