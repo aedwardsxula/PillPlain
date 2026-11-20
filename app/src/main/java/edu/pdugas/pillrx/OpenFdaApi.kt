@@ -6,6 +6,9 @@ import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 
 object OpenFdaApi {
     private val client = HttpClient(CIO) {
@@ -23,5 +26,25 @@ object OpenFdaApi {
             connectTimeoutMillis = 15_000
             socketTimeoutMillis = 30_000
         }
+    }
+    suspend fun fetchLabels(): OpenFdaResponse {
+        val apiKey = BuildConfig.OPENFDA_API_KEY.trim()
+
+        check(apiKey.isNotEmpty()) {
+            "Add OPENFDA_API_KEY to local.properties and rebuild."
+        }
+
+        val response = client.get(
+            "https://api.fda.gov/drug/label.json"
+        ) {
+            parameter("api_key", apiKey)
+            parameter("limit", 5)
+        }
+
+        check(response.status.value in 200..299) {
+            "openFDA request failed with HTTP ${response.status.value}."
+        }
+
+        return response.body<OpenFdaResponse>()
     }
 }
