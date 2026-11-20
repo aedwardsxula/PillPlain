@@ -15,9 +15,19 @@ data class DrugLabel(
     val purpose: List<String> = emptyList(),
 
     @SerialName("indications_and_usage")
-    val indicationsAndUsage: List<String> = emptyList()
-)
+    val indicationsAndUsage: List<String> = emptyList(),
 
+    val warnings: List<String> = emptyList(),
+
+    @SerialName("warnings_and_cautions")
+    val warningsAndCautions: List<String> = emptyList(),
+
+    @SerialName("boxed_warning")
+    val boxedWarning: List<String> = emptyList(),
+
+    @SerialName("dosage_and_administration")
+    val dosageAndAdministration: List<String> = emptyList()
+)
 @Serializable
 data class OpenFdaNames(
     @SerialName("brand_name")
