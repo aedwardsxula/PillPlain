@@ -15,9 +15,28 @@ label sections easier to find and read on a phone
 ## Getting Started
 
 1. Clone this team repository to your computer.
-2. Open this repository folder in your code editor.
+2. Open Android Studio and select Open.
+3. Choose the cloned folder containing settings.gradle.kts.
+4. Click Trust Project if prompted.
+5. Obtain a free API key from https://open.fda.gov/apis/authentication/.
+6. Open local.properties and add this on a new line:
+   OPENFDA_API_KEY=your_key_here
+7. Replace your_key_here with your actual key and save.
+   local.properties is ignored by Git.
+8. Click Sync Now if prompted and wait for Gradle sync to finish.
+   Install any missing SDK components when prompted.
+9. Select app in the run configuration dropdown.
+10. Select an Android emulator. If none is available, open
+    Tools > Device Manager and create one.
+    We tested with Pixel 6 API 34.
+11. Click Run and wait for PillPlain’s Home screen to appear.
 
-# FIX ME - App setup and launch instructions will be added once the team verifies them.
+### Verify the API Request
+
+1. Start an emulator with internet access.
+2. Open OpenFdaApiTest.kt under the androidTest package.
+3. Right-click OpenFdaApiTest and select Run.
+4. Confirm that the test passes.
 
 ## Getting Help
 
@@ -43,3 +62,5 @@ For setup questions or bug reports, contact a team member listed below
 | Terron | 2026-11-17 | #9 Configure PillPlain’s color scheme, typography, and UI styling. |
 | Pierce | 2026-11-17 | #10 Review openFDA Drug Label API documentation and response structure. |
 | Pierce | 2026-11-17 | #11 Add required Ktor HTTP networking dependencies & internet permissions to AndroidManifest.xml. to Android Studio. |
+| Terron | 2026-11-20 | #13–14 Configure openFDA Drug Label API key for development without committing to GitHub. Create Kotlin data classes matching openFDA results array and label fields. |
+| Terron | 2026-11-20 | #15 Implement GET request to api.fda.gov/drug/label.json |
