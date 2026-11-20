@@ -1,9 +1,17 @@
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
 }
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
 
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use {
+        localProperties.load(it)
+    }
+}
 android {
     namespace = "edu.pdugas.pillrx"
     compileSdk {
@@ -16,7 +24,16 @@ android {
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
+        val openFdaApiKey = localProperties
+            .getProperty("OPENFDA_API_KEY", "")
+            .replace("\\", "\\\\")
+            .replace("\"", "\\\"")
 
+        buildConfigField(
+            "String",
+            "OPENFDA_API_KEY",
+            "\"$openFdaApiKey\""
+        )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -33,6 +50,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
