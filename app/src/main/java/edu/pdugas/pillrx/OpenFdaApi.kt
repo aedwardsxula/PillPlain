@@ -60,4 +60,23 @@ object OpenFdaApi {
 
         return response.body<OpenFdaResponse>()
     }
+
+    suspend fun searchGenericMedication(
+        medicationName: String
+    ): OpenFdaResponse {
+
+        val name = medicationName.trim()
+
+        require(name.isNotEmpty()) {
+            "Medication name cannot be empty."
+        }
+
+        val searchExpression =
+            "openfda.generic_name:\"${name.replace("\"", "\\\"")}\""
+
+        return fetchLabels(
+            searchExpression = searchExpression,
+            limit = 10
+        )
+    }
 }
