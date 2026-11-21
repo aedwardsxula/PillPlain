@@ -64,3 +64,4 @@ For setup questions or bug reports, contact a team member listed below
 | Pierce | 2026-11-17 | #11 Add required Ktor HTTP networking dependencies & internet permissions to AndroidManifest.xml. to Android Studio. |
 | Terron | 2026-11-20 | #13–14 Configure openFDA Drug Label API key for development without committing to GitHub. Create Kotlin data classes matching openFDA results array and label fields. |
 | Terron | 2026-11-20 | #15 Implement GET request to api.fda.gov/drug/label.json |
+| Pierce | 2026-11-21 | #16 Add api key, search, and limit query parameters. Implement medication searches with openFDA field. Include brand-name searches with openFDA field.  |
