@@ -79,4 +79,20 @@ object OpenFdaApi {
             limit = 10
         )
     }
-}
+
+        suspend fun searchBrandMedication(
+            medicationName: String
+        ): OpenFdaResponse {
+            val name = medicationName.trim()
+
+            require(name.isNotEmpty()) {
+                "Medication name cannot be empty."
+            }
+            val searchExpression =
+                "openfda.brand_name:\"${name.replace("\"", "\\\"")}\""
+            return fetchLabels(
+                searchExpression = searchExpression,
+                limit = 10
+            )
+        }
+    }
