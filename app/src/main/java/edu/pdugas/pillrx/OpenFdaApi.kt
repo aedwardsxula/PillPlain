@@ -10,6 +10,7 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 
+
 object OpenFdaApi {
     private val client = HttpClient(CIO) {
         install(ContentNegotiation) {
@@ -27,18 +28,30 @@ object OpenFdaApi {
             socketTimeoutMillis = 30_000
         }
     }
-    suspend fun fetchLabels(): OpenFdaResponse {
+
+    suspend fun fetchLabels(
+        searchExpression: String = "",
+        limit: Int = 5
+    ): OpenFdaResponse {
+
         val apiKey = BuildConfig.OPENFDA_API_KEY.trim()
 
         check(apiKey.isNotEmpty()) {
             "Add OPENFDA_API_KEY to local.properties and rebuild."
         }
 
+        require(limit in 1..1000) {
+            "Limit must be between 1 and 1000."
+        }
+
         val response = client.get(
             "https://api.fda.gov/drug/label.json"
         ) {
             parameter("api_key", apiKey)
-            parameter("limit", 5)
+            if (searchExpression.isNotBlank()) {
+                parameter("search", searchExpression)
+            }
+            parameter("limit", limit)
         }
 
         check(response.status.value in 200..299) {
